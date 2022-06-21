@@ -4,6 +4,6 @@ namespace Components
 {
     public struct PlayerComponent
     {
-        public Transform Transform;
+        public Vector3 Position;
     }
 }

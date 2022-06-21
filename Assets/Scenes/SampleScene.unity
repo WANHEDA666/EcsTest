@@ -123,6 +123,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &55778864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4580489678396381416, guid: 3e08787d8baff45ce92d6e94ee023ca0, type: 3}
+  m_PrefabInstance: {fileID: 4606073474890678530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &55778865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55778864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97b9e778eaf4c85bc8c6a4aa09d08b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1173562013}
 --- !u!1 &164952461
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,6 +747,7 @@ GameObject:
   - component: {fileID: 1085692647}
   - component: {fileID: 1085692646}
   - component: {fileID: 1085692645}
+  - component: {fileID: 1085692649}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -816,8 +835,29 @@ Transform:
   - {fileID: 2101414268}
   - {fileID: 164952465}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1085692649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085692644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c27af2b22ca34316bd7da63c7d8f3bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doors:
+  - door: {fileID: 1623397878}
+    button: {fileID: 2022116719}
+  - door: {fileID: 746948462}
+    button: {fileID: 2061176442}
+  - door: {fileID: 1738534661}
+    button: {fileID: 1810039521}
+  - door: {fileID: 1117706331}
+    button: {fileID: 204871838}
 --- !u!1 &1117706330
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,11 +953,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117706330}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!95 &1173562012 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4580489678405872454, guid: 3e08787d8baff45ce92d6e94ee023ca0, type: 3}
-  m_PrefabInstance: {fileID: 4606073474890678530}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1173562013 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4580489678396802186, guid: 3e08787d8baff45ce92d6e94ee023ca0, type: 3}
@@ -952,17 +987,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2cc5bbd02924936a008c9f60d41fb63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 1173562013}
-  playerAnimator: {fileID: 1173562012}
-  doors:
-  - door: {fileID: 1623397878}
-    button: {fileID: 2022116719}
-  - door: {fileID: 746948462}
-    button: {fileID: 2061176442}
-  - door: {fileID: 1738534661}
-    button: {fileID: 1810039521}
-  - door: {fileID: 1117706331}
-    button: {fileID: 204871838}
+  playerView: {fileID: 55778865}
+  inputView: {fileID: 1830892436}
+  doorsView: {fileID: 1085692649}
 --- !u!4 &1313159578
 Transform:
   m_ObjectHideFlags: 0
@@ -1359,6 +1386,49 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810039520}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1830892435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1830892437}
+  - component: {fileID: 1830892436}
+  m_Layer: 0
+  m_Name: Input
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1830892436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830892435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f3dcc77036c45feb6b253937030d1f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1830892437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830892435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2022116718
 GameObject:
   m_ObjectHideFlags: 0

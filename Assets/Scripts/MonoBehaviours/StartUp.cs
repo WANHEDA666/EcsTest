@@ -1,32 +1,32 @@
 using Systems;
 using Leopotam.EcsLite;
 using UnityEngine;
-using Utils;
 
 namespace MonoBehaviours
 {
     public class StartUp : MonoBehaviour
     {
-        [SerializeField] private Transform playerTransform;
-        [SerializeField] private Door[] doors;
+        [SerializeField] private PlayerView playerView;
+        [SerializeField] private InputView inputView;
+        [SerializeField] private DoorsView doorsView;
         private EcsWorld _world;
-        private EcsSystems _updateSystems;
+        private EcsSystems updateSystems;
         private GameData gameData;
 
         private void Start()
         {
             _world = new EcsWorld();
-            gameData = new GameData {Transform = playerTransform, Doors = doors};
-            _updateSystems = new EcsSystems(_world, gameData)
+            gameData = new GameData {PlayerView = playerView, InputView  = inputView, DoorsView = doorsView};
+            updateSystems = new EcsSystems(_world, gameData)
                 .Add(new PlayerSystem())
-                .Add(new ButtonSystem())
+                .Add(new DoorsSystem())
                 .Add(new InputSystem());
-            _updateSystems.Init();
+            updateSystems.Init();
         }
 
         private void Update()
         {
-            _updateSystems.Run();
+            updateSystems.Run();
         }
     }
 }
