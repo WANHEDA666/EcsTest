@@ -49,7 +49,7 @@ namespace Systems
                     new Vector3(lockComponent.ButtonPosition.x, 0, lockComponent.ButtonPosition.y)) <= 0.3f)
                 {
                     var destination = Vector3.MoveTowards(new Vector3(lockComponent.DoorPosition.x, 0, lockComponent.DoorPosition.y), 
-                        new Vector3(), 0.5f * Time.deltaTime);
+                        new Vector3(), 0.01f);
                     lockComponent.DoorPosition = new SimpleVector2(destination.x, destination.z);
                 }
             }
