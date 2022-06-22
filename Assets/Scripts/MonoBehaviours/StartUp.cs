@@ -1,25 +1,31 @@
 using Systems;
 using Leopotam.EcsLite;
 using UnityEngine;
+using Zenject;
 
 namespace MonoBehaviours
 {
     public class StartUp : MonoBehaviour
     {
-        [SerializeField] private PlayerView playerView;
-        [SerializeField] private InputView inputView;
-        [SerializeField] private DoorsView doorsView;
         private EcsWorld _world;
         private EcsSystems updateSystems;
-        private GameData gameData;
+        private LockSystem lockSystem;
+        private PlayerSystem playerSystem;
+        
+        [Inject]
+        private void Construct(LockSystem lockSystem, PlayerSystem playerSystem)
+        {
+            this.lockSystem = lockSystem;
+            this.playerSystem = playerSystem;
+        }
 
         private void Start()
         {
             _world = new EcsWorld();
-            gameData = new GameData {PlayerView = playerView, InputView  = inputView, DoorsView = doorsView};
-            updateSystems = new EcsSystems(_world, gameData)
-                .Add(new PlayerSystem())
-                .Add(new DoorsSystem())
+            
+            updateSystems = new EcsSystems(_world)
+                .Add(playerSystem)
+                .Add(lockSystem)
                 .Add(new InputSystem());
             updateSystems.Init();
         }

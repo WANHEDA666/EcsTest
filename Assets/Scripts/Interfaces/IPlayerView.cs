@@ -1,9 +1,8 @@
-using Components;
-
 namespace Interfaces
 {
     public interface IPlayerView
     {
-        void Move(ref PlayerComponent playerComponent, InputComponent inputComponent);
+        SimpleVector2 Position { get; set; }
+        SimpleVector2 Target { set; }
     }
 }
