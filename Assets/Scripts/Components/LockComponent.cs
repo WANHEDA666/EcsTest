@@ -1,5 +1,4 @@
 using Interfaces;
-using UnityEngine;
 
 namespace Components
 {
@@ -13,7 +12,7 @@ namespace Components
             set
             {
                 doorPosition = value;
-                LockView.DoorView.Door.localPosition = new Vector2(doorPosition.x, doorPosition.y);
+                LockView.DoorView.Door = new SimpleVector2(doorPosition.x, doorPosition.y);
             }
         }
 

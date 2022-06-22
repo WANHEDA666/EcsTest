@@ -1,4 +1,5 @@
 using Systems;
+using Interfaces;
 using MonoBehaviours;
 using Zenject;
 
@@ -11,8 +12,8 @@ namespace MonoInstallers
 
         public override void InstallBindings()
         {
-            Container.Bind<PlayerView>().FromInstance(playerView).AsSingle().NonLazy();
-            Container.Bind<LockView[]>().FromInstance(locksView).AsSingle().NonLazy();
+            Container.Bind<IPlayerView>().FromInstance(playerView).AsSingle().NonLazy();
+            Container.Bind<ILockView[]>().FromInstance(locksView).AsSingle().NonLazy();
             
             var lockSystem = Container.Instantiate(typeof(LockSystem)) as LockSystem;
             Container.Bind<LockSystem>().FromInstance(lockSystem);

@@ -1,6 +1,6 @@
 using Components;
+using Interfaces;
 using Leopotam.EcsLite;
-using MonoBehaviours;
 using UnityEngine;
 using Zenject;
 
@@ -8,10 +8,10 @@ namespace Systems
 {
     public class LockSystem : IEcsInitSystem, IEcsRunSystem
     {
-        private LockView[] locksView;
+        private ILockView[] locksView;
         
         [Inject]
-        private void Construct(LockView[] locksView)
+        private void Construct(ILockView[] locksView)
         {
             this.locksView = locksView;
         }
@@ -25,8 +25,9 @@ namespace Systems
                 locksComponentPool.Add(lockEntity);
                 ref var lockComponent = ref locksComponentPool.Get(lockEntity);
                 lockComponent.LockView = lockView;
-                lockComponent.ButtonPosition = new SimpleVector2(lockView.Button.position.x,lockView.Button.position.z);
-                lockComponent.DoorPosition = new SimpleVector2(lockView.DoorView.Door.localPosition.x,lockView.DoorView.Door.localPosition.z);
+                lockComponent.ButtonPosition = lockView.Button;
+                var position = lockView.DoorView.Door;
+                lockComponent.DoorPosition = new SimpleVector2(position.x, position.y);
             }
         }
 

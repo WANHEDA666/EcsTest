@@ -1,6 +1,6 @@
 using Components;
+using Interfaces;
 using Leopotam.EcsLite;
-using MonoBehaviours;
 using UnityEngine;
 using Zenject;
 
@@ -8,10 +8,10 @@ namespace Systems
 {
     public class PlayerSystem : IEcsInitSystem, IEcsRunSystem
     {
-        private PlayerView playerView;
+        private IPlayerView playerView;
         
         [Inject]
-        private void Construct(PlayerView playerView)
+        private void Construct(IPlayerView playerView)
         {
             this.playerView = playerView;
         }
