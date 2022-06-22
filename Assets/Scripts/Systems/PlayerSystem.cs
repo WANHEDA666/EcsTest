@@ -39,12 +39,15 @@ namespace Systems
             {
                 ref var inputComponent = ref inputComponentPool.Get(entity);
                 ref var playerComponent = ref playerComponentPool.Get(entity);
-                var destination = new Vector3(inputComponent.Position.x, 0, inputComponent.Position.y);
-                var moveVector = Vector3.MoveTowards(new Vector3(playerComponent.Position.x, 0, playerComponent.Position.y), 
-                    destination, 0.01f);
-                playerComponent.Position = new SimpleVector2(moveVector.x, moveVector.z);
-                playerComponent.PlayerView.Position = new SimpleVector2(playerComponent.Position.x, playerComponent.Position.y);
-                playerComponent.PlayerView.Target = new SimpleVector2(destination.x, destination.z);
+                if (inputComponent.Clicked)
+                {
+                    var destination = new Vector3(inputComponent.Position.x, 0, inputComponent.Position.y);
+                    var moveVector = Vector3.MoveTowards(new Vector3(playerComponent.Position.x, 0, playerComponent.Position.y), 
+                        destination, 0.01f);
+                    playerComponent.Position = new SimpleVector2(moveVector.x, moveVector.z);
+                    playerComponent.PlayerView.Position = new SimpleVector2(playerComponent.Position.x, playerComponent.Position.y);
+                    playerComponent.PlayerView.Target = new SimpleVector2(destination.x, destination.z);
+                }
             }
         }
     }

@@ -7,7 +7,7 @@ namespace MonoBehaviours
     {
         public SimpleVector2 Position
         {
-            get => new SimpleVector2();
+            get => new SimpleVector2(transform.position.x, transform.position.z);
             set => transform.position = new Vector3(value.x, 0, value.y);
         }
 

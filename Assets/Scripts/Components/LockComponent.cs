@@ -13,7 +13,7 @@ namespace Components
             set
             {
                 doorPosition = value;
-                LockView.DoorView.Door.localPosition = new Vector3(doorPosition.x, 0,  doorPosition.y);
+                LockView.DoorView.Door.localPosition = new Vector2(doorPosition.x, doorPosition.y);
             }
         }
 

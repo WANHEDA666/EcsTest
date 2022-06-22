@@ -11,7 +11,7 @@ namespace Systems
             var world = systems.GetWorld();
             var inputComponentPool = world.GetPool<InputComponent>();
             ref var inputComponent = ref inputComponentPool.Get(0);
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(0))
             {
                 var screenPosition = Input.mousePosition;
                 screenPosition.z = Camera.main.nearClipPlane + 1;
@@ -22,6 +22,7 @@ namespace Systems
                     var xDirection = hit.point.x;
                     var zDirection = hit.point.z;
                     inputComponent.Position = new SimpleVector2(xDirection, zDirection);
+                    inputComponent.Clicked = true;
                 }
             }
         }

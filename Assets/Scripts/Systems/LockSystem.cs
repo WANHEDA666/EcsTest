@@ -25,8 +25,8 @@ namespace Systems
                 locksComponentPool.Add(lockEntity);
                 ref var lockComponent = ref locksComponentPool.Get(lockEntity);
                 lockComponent.LockView = lockView;
-                lockComponent.ButtonPosition = new SimpleVector2(lockView.Button.position.x, lockView.Button.position.z);
-                lockComponent.DoorPosition = new SimpleVector2( lockView.DoorView.Door.localPosition.x,  lockView.DoorView.Door.localPosition.z);
+                lockComponent.ButtonPosition = new SimpleVector2(lockView.Button.position.x,lockView.Button.position.z);
+                lockComponent.DoorPosition = new SimpleVector2(lockView.DoorView.Door.localPosition.x,lockView.DoorView.Door.localPosition.z);
             }
         }
 
